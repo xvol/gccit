@@ -10,6 +10,9 @@ Future improvements:
 	Add more options ontop of -s [sudo]
 	Fix the issue of program not receiving stdin from commands like:
 		gccit myprog < sometext.txt
+	Clean up flags with booleans
+		
+	Optionally output info like no of lines in code, etc?
 */
 
 #include <stdio.h>
@@ -28,7 +31,6 @@ Future improvements:
 void compile_prog(int argc, char* argv[], char* file_name);
 void build_opts(int argc, char* argv[], char** cmd_options);
 void run_prog(int argc, char* argv[], char* file_name);
-
 
 
 int main(int argc, char* argv[]){
@@ -60,27 +62,8 @@ int main(int argc, char* argv[]){
 	compile_prog(argc, argv, file_name);
 	run_prog(argc, argv, file_name);
 	
-	/* take argv[0] and run gcc on it
-	then take all other arguments and store them
 	
-	with stores argumetns you can append them to the call to your program.
-	
-	Thus if your program requires inputs like:
-		aes@rosa: ~: myprog -x 50 -J 100 "jaybird"
-		Then you can run gccit myprog.c -x 50 -J 100 "jaybird"
-		
-		Which will first take gccit -ansi -Wall -o myprog myprog.c
-		Then run ./myprog -x 50 -J 100 "jaybird"	
-	*/
-	
-
-	
-	/* optionally output info like no of lines in code, etc? */
-
-	
-
-	
-	return 0;	
+	return EXIT_SUCCESS;	
 }
 
 void compile_prog(int argc, char* argv[], char* file_name){
